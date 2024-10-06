@@ -46,7 +46,7 @@ end
 function draw_entities()
 	draw_particles(stars)
 	draw_particles(flares)
-	circfill(64, 64, main_radius, 10) -- main star
+	circfill(64, 64, mid(9, main_radius, 10), 10) -- main star
  
  for circle in all(circles) do
  	circfill(circle.x, circle.y, circle.radius, circle.clr)
@@ -60,7 +60,7 @@ function spawn_circle()
 
 	local x, y = choose_spawn()
 
-	-- 1/3 passes over sun
+	-- 1/3 passes over main star
 	local target_x, target_y, radius
 	if rnd(3) < 1 then
 		target_x, target_y = 64, 64
@@ -81,7 +81,7 @@ function spawn_circle()
 	-- randomized speed factor -> [2, 4]
 	local speed_factor = (2 + rnd(2))
 	
-	local clr_list = {7, 9, 12}
+	local clr_list = {1, 4, 5, 6, 13}
 	
 	local circle = {
 		x = x,
@@ -183,7 +183,7 @@ function ibefore()
 	spawn_delay = 120
 	main_radius = 10
 	expanding = true
-	pulsate_speed = 0.0125
+	pulsate_speed = 0.3
 end
 
 
@@ -196,7 +196,7 @@ function ubefore()
 		if (main_radius >= 11) expanding=false
 	else
 		main_radius -= pulsate_speed
-		if (main_radius <= 9) expanding=true
+		if (main_radius <= 8) expanding=true
 	end
 
 	if (btnp(❎)) state="snap"
