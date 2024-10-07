@@ -36,5 +36,7 @@ Your first job as the rover is to use the **transit** method to identify stars w
 Your second job as the rover is to use the **direct imaging** method to photograph exoplanets. Exoplanets are more visible when there is less light interference, so you need to take a photograph when an astroid is passing over the star you are observing.
 
 ## References
+https://pico-8.fandom.com/wiki/Pico-8_Wikia
+https://en.wikipedia.org/wiki/PICO-8
 
 # Credits
