@@ -9,6 +9,10 @@
 
 **3xoplorer** is a game designed to teach younger audiences about the methods used to discover exoplanets, focusing on the *transit* and *direct imaging* methods. Our minigames were carefully crafted to simplify the discovery processes, giving players a fun and interactive hands-on learning experience. The ultimate goal is for *3xoplorers* to find its way into classrooms, helping younger students explore the universe in a way that feels less like homework and more like an adventure!
 
+## Demo Video
+
+https://www.youtube.com/watch?v=aStfF9O4uN4
+
 ## How to Play 3xoplorers
 ### Controls
 To control your character, use the arrow keys. Inside your spaceship, the arrow keys will be used to navigate to the interactive control panels, which play your educational minigames! While playing the minigames, the arrow keys will only be used for selection, and the interaction keys are `z` and `x`. Additionally, all controls are thoroughly explained before minigames start.
