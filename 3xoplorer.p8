@@ -452,7 +452,6 @@ function dmg1()
     print("⬅️",6,61,6)
     print("➡️",115,61,6)
     print("star "..cur_star_i,53,28,7)
-    print("    ",4,7,7)
 
     --selected stars
     for i=1,#selected_stars do
