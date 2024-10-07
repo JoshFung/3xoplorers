@@ -719,6 +719,18 @@ function img1()
 
     correct_stars=init_correct_stars()
     win=nil
+    
+    mg1_star_names={
+     "proxima centauri",
+     "lalande 21185",
+     "gliese 1061",
+     "wolf 1061",
+     "61 virginis",
+     "55 cancri",
+     "hd 40307",
+     "nu lupi",
+     "gj 9827",
+    }
 
     --table containing stars
     mg1_stars={}
@@ -794,13 +806,13 @@ function dmg1()
     --ui
     print("⬅️",6,61,6)
     print("➡️",115,61,6)
-    print("star "..cur_star_i,53,28,7)
+    print(#cur_star.name)
+    print(cur_star.name,(129-(#cur_star.name)*4)/2,28,7)
 
     --selected stars
     for i=1,#selected_stars do
         circfill(5+12*(i-1),5,3,mg1_stars[selected_stars[i]].dim)
         circfill(5+12*(i-1),5,2,mg1_stars[selected_stars[i]].bright)
-        print(selected_stars[i],4+12*(i-1),14)
     end
     if contains(selected_stars,cur_star_i) then
         print("🅾️ to unselect",37,90,7)
@@ -830,6 +842,7 @@ end
 
 function mg1_add_star(bright,dim)
     star = {}
+    star.name=mg1_star_names[#mg1_stars+1]
     star.bright=bright
     star.dim=dim
     star.size=6+flr(rnd(12))
