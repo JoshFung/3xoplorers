@@ -5,7 +5,7 @@
 
 > Challenge: Chronicles of Exoplanet Exploration
 
-Playable at [https://www.lexaloffle.com/bbs/?tid=144633](link)
+Playable at [link](https://www.lexaloffle.com/bbs/?tid=144633)
 
 ## Overview
 
