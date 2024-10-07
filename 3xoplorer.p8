@@ -911,7 +911,6 @@ function dmg1()
     --ui
     print("⬅️",6,61,6)
     print("➡️",115,61,6)
-    print(#cur_star.name)
     print(cur_star.name,(129-(#cur_star.name)*4)/2,28,7)
 
     --selected stars
