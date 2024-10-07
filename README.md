@@ -15,6 +15,13 @@
 
 https://www.youtube.com/watch?v=aStfF9O4uN4
 
+## Downloads
+### Mac
+[3xoplorer_osx.zip](https://github.com/user-attachments/files/17285197/3xoplorer_osx.zip)
+
+### Windows
+
+
 ## How to Play 3xoplorers
 ### Controls
 To control your character, use the arrow keys. Inside your spaceship, the arrow keys will be used to navigate to the interactive control panels, which play your educational minigames! While playing the minigames, the arrow keys will only be used for selection, and the interaction keys are `z` and `x`. Additionally, all controls are thoroughly explained before minigames start.
