@@ -11,10 +11,16 @@ function _init()
  ititle()
  iplayer()
  isel()
+ iintropage()
+ iptypes()
+ inamingpage()
  icutscene()
  img1()
  
- music(0,5000)
+ musicnum=11
+ music(musicnum)
+ current_music=musicnum
+ 
  state="title"
  
  title_timer=0
@@ -29,13 +35,32 @@ function _update()
   utitle()
  end
 
-if state=="controls" then
+ if state=="controls" then
   ucontrols()
-end
+ end
+
+ if state=="intro" then
+  uintropage()
+ end
  
+ if state=="discovery methods" then
+  udiscoverymethods()
+ end
+ 
+ if state=="ptypes" then
+ 	uptypes()
+ end
+ 
+ if state=="naming" then
+  unamingpage()
+ end
  --play
  if state=="play" then
   uplayer()
+  if current_music~=0 then
+   current_music=0
+   music(0)
+  end
  end
  
  if state=="selectionbox" then
@@ -73,6 +98,14 @@ function _draw()
   dtitle()
  elseif state=="controls" then
   dcontrols()
+ elseif state=="intro" then
+  dintropage()
+ elseif state=="discovery methods" then
+  ddiscoverymethods()
+ elseif state=="ptypes" then
+ 	dptypes()
+ elseif state=="naming" then
+  dnamingpage()
  elseif state=="minigame" then
   cls(5)
   print("minigame screen",35,50,7)
@@ -88,6 +121,8 @@ function _draw()
   dmg2s()
  elseif state=="mg2a" then
   dmg2a()
+ elseif state=="ptypes" then
+  dptypes()
  end
 end
 -->8
@@ -181,15 +216,382 @@ function dplayer()
  end
 end
 -->8
---discovery method/tutorial
-function itut()
+--planettypes
+
+function iptypes()
+ btncd=5
+ 
+ textnum=1
+ ptext={
+  "gas giant planets (left) are often larger than jupiter",
+  "terrestrial planets (top-right) are earth-sized or smaller",
+  "neptune-like planets (middle) have hydrogen or helium-dominated atmospheres",
+  "super-earth planets (bottom-right) are typically terrestrial or rocky"
+ }
 end
 
-function utut()
+function uptypes()
+ if btnp(➡️) then
+  textnum+=1
+ elseif btnp(⬅️) and textnum>1 then
+  textnum-=1
+ end
+ 
+ if textnum>4 then
+  state="naming"
+ end
 end
 
-function dtut()
+function draw_parabolabigy()
+	// big yellow planet
+    for x = 0, 39 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 80 - (x - 64)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 1, 40 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 64 - (x - 64)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 2, 40 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 63 - (x - 64)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+     for x = 0, 36 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 90 - (x - 64)^2 / 110
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 36 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 91 - (x - 64)^2 / 110
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 36 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 80 - (x - 64)^2 / 110
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 29 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 100 - (x - 64)^2 / 150
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 29 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 101 - (x - 64)^2 / 150
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 28 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 102 - (x - 64)^2 / 150
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 36 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 87 - (x - 64)^2 / 150
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0,20 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 110 - (x - 64)^2 / 190
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0,19 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 111 - (x - 64)^2 / 190
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0,15 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 114 - (x - 64)^2 / 190
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0,7 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 115 - (x - 64)^2 / 300
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
 end
+
+
+
+
+function draw_parabola()
+
+    for x = (74-19), (74+17) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 64 - (x - 64)^2 / 100
+        pset(x, y, 6) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-17), (74+7) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 57 - (x - 50)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    
+    for x = (74-19), (74+12) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 64 - (x - 50)^2 / 100
+        pset(x, y, 6) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-19), (74+12) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 66 - (x - 50)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-19), (74+14) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 67 - (x - 50)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    
+    for x = (74-19), (74+19) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 70 - (x - 74)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+        for x = (74-19), (74+19) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 72 - (x - 74)^2 / 100
+        pset(x, y, 6) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-16), (74+16) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 78 - (x - 74)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-7), (74+15) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 84 - (x - 60)^2 / 130
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+end
+
+function draw_left_half_circle()
+    local h = 93 -- x-coordinate of the center
+    local k = 20 -- y-coordinate of the center
+    local r = 3 -- radius of the circle
+
+    for y = k - r, k + r do
+        -- calculate x for the left half of the circle
+        local x = h - sqrt(r^2 - (y - k)^2)
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+end
+
+
+
+
+
+function draw_parabola2()
+				
+				for x = (90-5), (90+8) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 10 + (x - 60)^2 / 130
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = (90-5), (90+8) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 11 + (x - 60)^2 / 130
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = (90-7), (90+7) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 12 + (x - 60)^2 / 115
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = (90-8), (90+5) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 15 + (x - 60)^2 / 109
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = (90-8), (90+1) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 19 + (x - 60)^2 / 100
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+ 
+end
+
+function draw_parabola3()
+
+//(100, 99, 10, 3)
+    for x = (100-6), (100+10) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 115 - (x - 60)^2 / 150
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+    
+    for x = (100-3), (100+10) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 115 - (x - 60)^2 / 220
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+    
+    for x = (100-3), (100+8) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 116 - (x - 60)^2 / 220
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+    
+    
+    for x = (100-10), (100+8) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 100 - (x - 60)^2 / 400
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+    
+    for x = (100-10), (100+10) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 103 - (x - 60)^2 / 395
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+end
+
+function dptypes()
+    cls()
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 20 + (x - 64)^2 / 100
+        pset(x, y, 1) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 15 + (x - 64)^2 / 250
+        pset(x, y, 1) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 10 + (x - 64)^2 / 250
+        pset(x, y, -15) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 130 - (x - 64)^2 / 250
+        pset(x, y, -15) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 130 - (x - 64)^2 / 200
+        pset(x, y, -15) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 115 - (x - 64)^2 / 300
+        pset(x, y, -15) -- plot the point in white (color 7)
+    end
+    
+    pset(45, 90, 12)
+    pset(46, 92, 12)
+    pset(45, 95, 12)
+    pset(40, 100, 2)
+    pset(46, 100, 2)
+    circ(40, 100, 3, 2)
+    
+    
+    circfill(0, 64, 48, 1)
+    circfill(0, 64, 44, 13)
+    circfill(0, 64, 42, 10)
+    circfill(0, 64, 41, 2)
+    circfill(0, 64, 40, 9) -- big yellow planet at side
+
+    
+    circfill(90, 20, 17, 1)
+    circfill(90, 20, 12, 13)
+    circfill(90, 20, 10, 10)
+    circfill(90, 20, 9, 2)
+    circfill(90, 20, 8, 9) -- small yellow planet
+    
+    circfill(100, 99, 15, 1)
+    circfill(100, 99, 12, 13)
+    circfill(100, 99, 11, 0)
+    circfill(100, 99, 10, 3) -- green planet
+    
+    
+    circfill(74, 65, 29, 1)
+    circfill(74, 65, 22, 13)
+    circfill(74, 65, 21, 12)
+    circfill(74, 65, 20, 0)
+    circfill(74, 65, 19, 12) -- blue planet
+				
+			 pset(100, 50, 6)
+			 pset(104, 55, 6)
+			 pset(98, 50, 12)
+			 pset(92, 50, 12)
+			 pset(99, 55, 12)
+			 pset(99, 40, 7)
+			 circ(98, 50, 3, 12)
+			 
+			 pset(13, 20, 7)
+			 pset(13, 15, 7)
+			 pset(10, 15, 12)
+			 circ(11, 10, 3, 12)
+			 circ(11, 10, 1, 12)
+			 
+			 circ(40, 10, 1, 12)
+			 pset(47, 12, 7)
+			 pset(47, 16, 7)
+			 pset(43, 12, 7)
+			 
+			 
+
+				draw_parabola()
+				draw_parabola2()
+				draw_parabola3()
+    draw_parabolabigy() -- draw the parabola
+ 
+ 
+ local wrapped_text = wrap_text(ptext[textnum], 90)
+ local box_height = calc_box_height(wrapped_text)
+ 
+ rectfill(1, 90, 90, 90 + box_height, 7)
+ rect(0, 89, 90, 91 + box_height, 1)
+ spr(7,1,73,2,2)
+ local y_offset = 101
+ for line in all(wrapped_text) do
+  print(line, 2, y_offset-10, 1)
+  y_offset += 8
+ end
+ 
+ print("➡️", 81, y_offset-11)
+ print("⬅️", 3, y_offset-11)
+ 
+end
+
+
 -->8
 --selection box functions
 
@@ -278,9 +680,16 @@ function icutscene()
  
  -- todo: uncomment after test
  text2 = {
---  "welcome back rover,",
---  "for this mission, you will help me discover an exoplanet using the radial velocity method.",
---  "press ➡️ to learn about your mission."
+  "welcome back rover, ready to discover another exoplanet?",
+  "sometimes, exoplanets can be hard to see because of the light from nearby stars.",
+  "to make the exoplanets more visible, scientists block the light coming from the star so that they can see the exoplanet better.",
+  "this technique is called the direct imaging method.",
+  "for this mission, we will be using direct imaging to discover a new exoplanet.",
+  "i already set up a camera facing a star.",
+  "there are some asteroids flying around. your job is to take a picture when an astroid is blocking the light from the star.",
+  "once you are ready to take the picture, press ❎.",
+  "then we will be able to see if the star has an exoplanet orbiting it.",
+  "good luck rover!",
  }
  
  msgindex = 1
@@ -337,6 +746,18 @@ function ucutscene()
  if btnp(➡️) then
   msgindex += 1
  end
+ 
+ if csnum==1 then
+  if current_music~=9 then
+   current_music=9
+   music(9)
+  end
+ elseif csnum==2 then
+  if current_music~=7 then
+   current_music=7
+   music(7)
+  end
+ end
 end
 
 function dcutscene()
@@ -385,6 +806,18 @@ function img1()
 
     correct_stars=init_correct_stars()
     win=nil
+    
+    mg1_star_names={
+     "proxima centauri",
+     "lalande 21185",
+     "gliese 1061",
+     "wolf 1061",
+     "61 virginis",
+     "55 cancri",
+     "hd 40307",
+     "nu lupi",
+     "gj 9827",
+    }
     mg1_show_discovery=false
     mg1_spr_idx=0
     mg1_spr_timer=15
@@ -471,18 +904,19 @@ function dmg1()
         return
     end
 
+    --background
 				bg_draw_stars()
 
     --ui
     print("⬅️",6,61,6)
     print("➡️",115,61,6)
-    print("star "..cur_star_i,53,28,7)
+    print(#cur_star.name)
+    print(cur_star.name,(129-(#cur_star.name)*4)/2,28,7)
 
     --selected stars
     for i=1,#selected_stars do
         circfill(5+12*(i-1),5,3,mg1_stars[selected_stars[i]].dim)
         circfill(5+12*(i-1),5,2,mg1_stars[selected_stars[i]].bright)
-        print(selected_stars[i],4+12*(i-1),14)
     end
     if contains(selected_stars,cur_star_i) then
         print("🅾️ to unselect",37,90,7)
@@ -512,6 +946,7 @@ end
 
 function mg1_add_star(bright,dim)
     star = {}
+    star.name=mg1_star_names[#mg1_stars+1]
     star.bright=bright
     star.dim=dim
     star.size=6+flr(rnd(12))
@@ -989,7 +1424,7 @@ function icontrols()
     -- set state to "controls" initially
 end
 
-button_cooldown = 2
+local button_cooldown = 2
 -- update function for controls tutorial
 function ucontrols()
 	if button_cooldown > 0 then
@@ -997,7 +1432,7 @@ function ucontrols()
  end
     -- check for button press ❎ (x key)
  if (btnp(❎) or btnp(🅾️)) and button_cooldown==0 then
-  state = "play"  -- change to the game state to start
+  state = "intro" 
 		button_cooldown = 2
 	end
 end
@@ -1028,6 +1463,191 @@ function dcontrols()
     print("⬅️: left arrow", text_x,text_y+40, 7)
     print("press ❎ to play", text_x, text_y + 80, 6)
 end
+-->8
+--intro page functions 
+function iintropage()
+	bg_stars_init(3,80)
+ intro_text = {
+  "hello there! welcome to the 3xoplorers program, rover.",
+  "my name is pubert, chief 3xoplerer.",
+  "our vast galaxy is filled with planets outside our solar system, called exoplanets.",
+  "most exoplanets orbit another star, light years away from earth.",
+  "we need your help to learn more about the billions we're yet to discover.",
+  "how can we begin looking for new exoplanets? there are 5 main ways.",
+ }
+
+ intromsgindex=1
+end
+
+function uintropage()
+ if btnp(➡️) then
+  intromsgindex += 1
+ end
+end
+
+function dintropage()
+	cls()
+	bg_draw_stars()
+ local current_text = intro_text[intromsgindex]
+ local wrapped_text = wrap_text(current_text, 108)
+ local box_height = calc_box_height(wrapped_text)
+ 
+ rectfill(10, 80, 118, 80 + box_height, 7)
+ rect(9, 79, 119, 81 + box_height, 1)
+ spr(7,10,63,2,2)
+ local y_offset = 91
+ for line in all(wrapped_text) do
+  print(line, 11, y_offset-10, 1)
+  y_offset += 8
+ end
+
+ if intromsgindex > #intro_text then
+  state = "discovery methods"
+  intromsgindex = 1
+ end
+
+ print("➡️", 111, y_offset-1)
+end
+
+-->8
+-- single large text box for all discovery methods
+function ddiscoverymethods()
+    -- full text to display, breaking up long descriptions as needed
+    local all_text = {
+        {"exoplanet discovery methods", 0},
+        {"1. radial velocity:", 1, "   wobbling stars", 5},
+        {"2. transit:", 1,"   shadows over stars", 5},
+        {"3. direct imaging:", 1, "   blocked starlight", 5},
+        {"4. gravitational microlensing", 1, "   light bent by gravity", 5},
+        {"5. astrometry:", 1, "   star position shifts", 5}
+    }
+
+    -- determine box dimensions
+    local box_width = 120  -- wider box width
+    local x_pos = (128 - box_width) / 2
+    local y_pos = 8
+    local box_height = 110  -- adjusted height for longer text
+
+    -- draw the text box in the center
+    rectfill(x_pos, y_pos, x_pos + box_width, y_pos + box_height, 7)  -- white box background
+    rect(x_pos - 1, y_pos - 1, x_pos + box_width + 1, y_pos + box_height + 1, 1)  -- black border
+
+    -- print the title and discovery methods inside the box
+    local y_offset = y_pos + 6
+    for entry in all(all_text) do
+        -- print title or label
+        if entry[1] ~= "" then
+            print(entry[1], x_pos + 4, y_offset, entry[2])
+            y_offset += 8
+        end
+
+        -- print description if available
+        if entry[3] then
+            print(entry[3], x_pos + 8, y_offset, entry[4])
+            y_offset +=10
+        end
+    end
+
+    -- display navigation prompt at the bottom
+    print("❎ continue", x_pos + box_width - 50, y_pos + box_height - 6, 0)
+end
+
+-- handle navigation for the discovery methods text
+function udiscoverymethods()
+    if btnp(❎) then  -- ❎ button to continue
+        state = "ptypes"  -- transition to the next game state as needed
+    end
+end
+
+-->8
+-- initialize naming page
+function inamingpage()
+				bg_stars_init(3,80)
+    naming_text = {
+        {"exoplanet nomenclature", 0}, -- color for the title
+        {"1. the telescope or survey \n that discovered it", 1},
+        {"2. the numerical order in \n which the planet's host star was cataloged", 1},
+        {"3. the alphabetic proximity \n order of the planet from its \n host star (starting from b)", 1},
+    }
+
+    naming_intro_text = "exoplanet names follow a logical cataloging system, based on three facts:"
+    example_text = "for example, kepler-16 b is the closest planet to the 16th star cataloged by the kepler telescope."
+				game_start_text = "now that you're equipped with some exoplanet basics, you're ready to be an 3xoplorer, rover!"
+				naming_index = 0
+end
+
+-- update function for naming page
+function unamingpage()
+				if naming_index ==0 then
+					naming_index = 1
+    elseif naming_index==5 then
+    	state="play"
+    elseif btnp(➡️) and (naming_index==1 or naming_index>2) then  -- ❎ button to continue
+    	naming_index += 1
+    elseif btnp(❎) and naming_index==2 then
+   		naming_index +=1
+   	end
+end
+
+-- draw function for naming page
+function dnamingpage()
+    cls()  -- clear the screen
+				bg_draw_stars()
+				if naming_index==1 then
+					local current_text = naming_intro_text
+ 				local wrapped_text = wrap_text(current_text, 108)
+ 				local box_height = calc_box_height(wrapped_text)
+ 
+ 				rectfill(10, 80, 118, 80 + box_height, 7)
+ 				rect(9, 79, 119, 81 + box_height, 1)
+ 				spr(7,10,63,2,2)
+ 				local y_offset = 91
+ 				for line in all(wrapped_text) do
+  				print(line, 11, y_offset-10, 1)
+  				y_offset += 8
+ 				end
+ 				print("➡️", 111, y_offset-1)
+ 			end
+ 			if naming_index==2 then
+					local box_width = 120  -- wider box width
+    	local x_pos = (128 - box_width) / 2
+    	local y_pos = 8
+    	local box_height = 110  -- adjusted height for longer text
+
+    -- draw the text box in the center
+    	rectfill(x_pos, y_pos, x_pos + box_width, y_pos + box_height, 7)  -- white box background
+    	rect(x_pos - 1, y_pos - 1, x_pos + box_width + 1, y_pos + box_height + 1, 1)  -- black border
+
+    -- print the title and discovery methods inside the box
+    	local y_offset = y_pos + 6
+    	for entry in all(naming_text) do
+        -- print title or label
+        if entry[1] ~= "" then
+            print(entry[1], x_pos + 4, y_offset, entry[2])
+            y_offset += 20
+        end
+    	end
+
+    -- display navigation prompt at the bottom
+    print("❎ continue", x_pos + box_width - 50, y_pos + box_height - 6, 0)
+				elseif naming_index==3 or naming_index==4 then
+					local current_text = naming_index==3 and example_text or game_start_text
+ 				local wrapped_text = wrap_text(current_text, 108)
+ 				local box_height = calc_box_height(wrapped_text)
+ 
+ 				rectfill(10, 80, 118, 80 + box_height, 7)
+ 				rect(9, 79, 119, 81 + box_height, 1)
+ 				spr(7,10,63,2,2)
+ 				local y_offset = 91
+ 				for line in all(wrapped_text) do
+  				print(line, 11, y_offset-10, 1)
+  				y_offset += 8
+ 				end
+ 				print("➡️", 111, y_offset-1)
+ 			end
+ 		
+end
+
 __gfx__
 000000006dddddddddddddd66dddddddddddddd60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000dddddddddddddddddddddddddddddddd0aa000aaa000aa00000000000000000000000000000000000000000000000000000000000000000000000000
@@ -1179,11 +1799,10 @@ d4d5d4d5d4d5d4d5d4d5d4d5d4d5d4d5000000000000000000000000000000000000000000000000
 c4c5c4c5c4c5c4c5c4c5c4c5c4c5c4c500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 d4d5d4d5d4d5d4d5d4d5d4d5d4d5d4d500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 __sfx__
-912000001f550245502655028550285402853026550285502655028550295502b5502b5402b5302d5502855028500285502c5502d550285002f550285002d550245002855026550245502355024550285502d550
 011e00000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023
-911e000028700287002b7002d7002d7003070032700327003270013700327000b7003070032700287002b7002d7003070032700187001a7001c7001c7002870028750287402b7502d7502d740307503275032740
+911e000011000287002b7002d7002d7003070032700327003270013700327000b7003070032700287002b7002d7003070032700187001a7001c7001c7002870028750287402b7502d7502d740307503275032740
 011e00000004000040070401004010040070400004000040070400904008040070400004000040070401004010040070400004000040070400904008040070400004000040070401004010040070400004000040
-011e00000c0230c6000c0230c0230c0000c0230c0231a9000c0230c0231a9000c0230c023009000c0230c0230c9000c0230c023249000c0230c0231c9000c0230c0230c0000c0230c023000000c0230c02300000
+011e00000c0230c6000c0230c0230c0000c0230c0231a8000c0230c0231a8000c0230c023008000c0230c0230c8000c0230c023248000c0230c0231c8000c0230c0230c0000c0230c023000000c0230c02300000
 911e0000327503475034740347303775032750327403273032720327103271032710327103271032700327003275034750347403275033750347503775037740377303b7503b7403b73039750347503375034750
 011e00000704009040080400704002040020400904011040110400904002040090400e04011040110400204004040040400b04013040130400b04004040040400b04013040130400b04009040090401004018040
 901e000034740347303472034710347103471034700377503975030750000003075030740307303072030710307102d7503075032750377503774037730357503775035750347503375034750347403473034720
@@ -1191,7 +1810,7 @@ __sfx__
 011e0000000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c023000000c0230c0230c0000c0230c023000000c0230c023000000c023
 901e00003075030740307302d7502f75030755307503074030730337503275030750327503175032750327403273032720327103271032710327103271000000000002b1002b1202d1202d120301203212032110
 011e0000020400204009040110401104009040050400c04011040140401404005040070400c0400e04018030180300e04017030170301702017020170201702000040070400c0401c0201c0201c0200204009040
-011e00000c0230c6000c0230c0230c0000c0230c0231a9000c0230c0231a9000c0230c023009000c0230c0230c9000c0230c023249000c0230c0231c9000c0230c0230c0000c0230c023000000c0230c02300000
+011e00000c0230c6000c0230c0230c0000c0230c0231a8000c0230c0231a8000c0230c023008000c0230c0230c8000c0230c023248000c0230c0231c8000c0230c0230c0000c0230c023000000c0230c02300000
 011e00001300000000000000000000000000000000000000000000000000000000000000000000000001303013030070401303013030130201302013020130200000000000000001802018020180200000000000
 901e0000341203012030120321203712032120341203412034120341103411034110341103411034110341003412034120341203212033120341203811038110381103b1103b1103b11039110341203312034120
 011e00000e0401d0201d0201d020040400b040100401f0201f0201f02002040090400e0401d0201c0201a020040400b040100401f0201f0200b04004040080400e04020020230201404015040100402402017040
@@ -1201,14 +1820,27 @@ __sfx__
 011e000007040000000604000000000001502015020110400000000000000001d0201d020000000000000000000001a0201a020000000000000000000001703017020170201803018020180201e0301e0201e020
 901e000030120301202b1202d1202f120301253012030120301103312032120301253012030120301103011030110301103011030110301100010000100001000010000100001000010000100001000010000100
 011e0000050400c04011040210201f0201d0201c0201a030180301404013040140401f0101f0101f0101d0101d0101f0101d0101d0101d0101c0101c0101c0150000000000000000000000000000000000000000
-001e00000c0230c6000c0230c0230c0000c0230c0231a9000c0230c0231a9000c0230c023009000c0230c0230c9000c0230c023249000c0230c0231c9000c0230c0230c0000c0230c000000000c0230c0230c023
+001e00000c0230c6000c0230c0230c0000c0230c0231a8000c0230c0231a8000c0230c023008000c0230c0230c8000c0230c023248000c0230c0231c8000c0230c0230c0000c0230c000000000c0230c0230c023
 011e00000000000000000001d0200000000000000000000000000050400c0401104000020000200002011010110100e0100001000010000100000000000000000000000000000000000000000000000000000000
+492000001f0001f055280552b0552905500000280550000026055000002505526040260302602026010260000000024055210551f055230552405526055000002804028030280202801028012280120000000000
+012000000c0550c0051305513005070550c00513055130050e055000051505500005090550000515055000001105500000180550000013055000001a055000000c05500000130550000007055000001305500000
+492000001f0001f055280552b0552905500000280550000026055000002505526040260302602026010260000000024055210551f055230552405526055000002404024030240202401024012240120000000000
+012000000c0550c0051305513005070550c00513055130050e05500005150550000509055000051505500000180301802018010000001a0301a0201a01000000180550000013055000000c0400c0300c0200c000
+012000000000000000000000000000000000000000000000000000000000000000000000000000000000000015030150201501000000170301702017010000000000000000000000000000000000000000000000
+49280000247401f740247402b7402b7302974029730287402674023740237301f7401f7301f720247001f740237401f74023740287402873026740267302374024740287402873024740247301f740007001f740
+012800000c0300c0200c0150c0300c0200c0100c0150c0000703007020070150703007020070100701507000070300702007015070300702007010070150c0000c0300c0200c0150c0300c0200c0100c01507000
+9128000018605000050c6350000500005000050c6350000500005000050c6350000500005000050c6350000500005000050c6350000500005000050c6350000500005000050c6350000500005000050c63500005
+49280000247401f740247402b7402b7302974029730287402674023740237301f7401f7301f720247001f740237401f74023740287402873026740267302374523740247402473524740247301f7402474028740
 __music__
-01 0203044d
-00 05060144
-00 07080944
-00 0a0b0c0d
-00 0e0f0110
-00 11120913
-02 14151617
+01 0102034d
+00 04050044
+00 06070844
+00 090a0b0c
+00 0d0e000f
+00 10110812
+02 13141516
+01 17184344
+02 191a1b44
+01 1c1d1e44
+02 1f1d1e44
 
