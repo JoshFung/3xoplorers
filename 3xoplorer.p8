@@ -262,8 +262,17 @@ function icutscene()
   "greetings rover,",
   "for this mission, you will help me discover an exoplanet using the transit method.",
   "the transit method is done by observing the brightness of stars.",
-  "when a planet passes in front of a star, the star's light levels dip briefly.",
-  "consistent dips in light suggest the presence of a planet orbiting the star."
+  "when a planet passes in front of a star, the star's light levels dip briefly for the observer.",
+  "consistent dips in light suggest the presence of a planet orbiting the star.",
+  "now lets use this to discover some exoplanets of our own.",
+  "in this minigame, you'll be looking at some stars.",
+  "only 3 of these stars will have an exoplanet orbiting them.",
+  "your job is to figure out which 3 stars have an exoplanet.",
+  "stars with exoplanets will get dimmer and brighter at a constant rate.",
+  "to switch between the star you are observing,         use ⬅️ and ➡️.",
+  "to select a star you think has an exoplanet, press 🅾️.",
+  "once you have selected 3 stars, use ❎ to check if you are correct.",
+  "good luck!",
  }
  
  text2 = {
@@ -361,12 +370,14 @@ function dcutscene()
   msgindex = 1
  end
 
- print("➡️", 111, y_offset-1)
+ print("➡️", 111, y_offset-11)
 end
 -->8
 --minigame 1 functions
 
 function img1()
+				bg_stars_init(3,80)
+
     star_timer=0
     dim=false
 
@@ -442,17 +453,18 @@ function dmg1()
     end
 
     --background
-    for i=0,127,31 do
-        for j=22,127,31 do
-            if j%2==0 then
-                circ(i+16,j,1,5)
-                circ(i+16,j,0,6)
-            else
-                circ(i,j,1,5)
-                circ(i,j,0,6)
-            end
-        end
-    end
+--    for i=0,127,31 do
+--        for j=22,127,31 do
+--            if j%2==0 then
+--                circ(i+16,j,1,5)
+--                circ(i+16,j,0,6)
+--            else
+--                circ(i,j,1,5)
+--                circ(i,j,0,6)
+--            end
+--        end
+--    end
+				bg_draw_stars()
 
     --ui
     print("⬅️",6,61,6)
@@ -818,9 +830,13 @@ end
 --title functions
 
 function ititle()
+ bg_stars_init(5,120)
+end
+
+function bg_stars_init(freq,life)
  stars_timer=0
- stars_freq=5
- star_life=120
+ stars_freq=freq
+ star_life=life
  stars={}
 end
 
@@ -833,13 +849,7 @@ end
 function dtitle()
  cls(0)
  
- if stars_timer>stars_freq then
-  stars_timer=0
-  add_star(flr(rnd(127)),flr(rnd(127)))
- end
- stars_timer+=1
- 
- draw_stars()
+ bg_draw_stars()
  
  chars={32,34,36,38,40,36,42,44,42}
  
@@ -859,6 +869,16 @@ function draw_char(char,x,y)
  spr(char+1,x+8,y)
  spr(char+16,x,y+8)
  spr(char+17,x+8,y+8)
+end
+
+function bg_draw_stars()
+	if stars_timer>stars_freq then
+  stars_timer=0
+  add_star(flr(rnd(127)),flr(rnd(127)))
+ end
+ stars_timer+=1
+ 
+ draw_stars()
 end
 
 function add_star(x,y)
