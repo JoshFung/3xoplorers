@@ -1,4 +1,5 @@
 # 3xoplorers - Submission for 2024 NASA Space Apps Challenge
+<img width="851" alt="image" src="https://github.com/user-attachments/assets/d97af3e9-78d5-4fb3-8237-4bca6fc7b882">
 
 
 ### Challenge: Chronicles of Exoplanet Exploration
