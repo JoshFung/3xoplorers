@@ -660,25 +660,23 @@ function icutscene()
  starfield = {}
  startimer = 0
 
-	-- todo: uncomment after test
  text1 = {
---  "greetings rover,",
---  "for this mission, you will help me discover an exoplanet using the transit method.",
---  "the transit method is done by observing the brightness of stars.",
---  "when a planet passes in front of a star, the star's light levels dip briefly for the observer.",
---  "consistent dips in light suggest the presence of a planet orbiting the star.",
---  "now lets use this to discover some exoplanets of our own.",
---  "in this minigame, you'll be looking at some stars.",
---  "only 3 of these stars will have an exoplanet orbiting them.",
---  "your job is to figure out which 3 stars have an exoplanet.",
---  "stars with exoplanets will get dimmer and brighter at a constant rate.",
---  "to switch between the star you are observing,         use ⬅️ and ➡️.",
---  "to select a star you think has an exoplanet, press 🅾️.",
---  "once you have selected 3 stars, use ❎ to check if you are correct.",
---  "good luck!",
+  "greetings rover,",
+  "for this mission, you will help me discover an exoplanet using the transit method.",
+  "the transit method is done by observing the brightness of stars.",
+  "when a planet passes in front of a star, the star's light levels dip briefly for the observer.",
+  "consistent dips in light suggest the presence of a planet orbiting the star.",
+  "now lets use this to discover some exoplanets of our own.",
+  "in this minigame, you'll be looking at some stars.",
+  "only 3 of these stars will have an exoplanet orbiting them.",
+  "your job is to figure out which 3 stars have an exoplanet.",
+  "stars with exoplanets will get dimmer and brighter at a constant rate.",
+  "to switch between the star you are observing,         use ⬅️ and ➡️.",
+  "to select a star you think has an exoplanet, press 🅾️.",
+  "once you have selected 3 stars, use ❎ to check if you are correct.",
+  "good luck!",
  }
  
- -- todo: uncomment after test
  text2 = {
   "welcome back rover, ready to discover another exoplanet?",
   "sometimes, exoplanets can be hard to see because of the light from nearby stars.",
@@ -910,7 +908,6 @@ function dmg1()
     --ui
     print("⬅️",6,61,6)
     print("➡️",115,61,6)
-    print(#cur_star.name)
     print(cur_star.name,(129-(#cur_star.name)*4)/2,28,7)
 
     --selected stars
