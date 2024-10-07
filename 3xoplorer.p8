@@ -676,7 +676,7 @@ function icutscene()
   "once you have selected 3 stars, use ❎ to check if you are correct.",
   "good luck!",
  }
- 
+
  text2 = {
   "welcome back rover, ready to discover another exoplanet?",
   "sometimes, exoplanets can be hard to see because of the light from nearby stars.",
@@ -859,6 +859,8 @@ function umg1()
     	state="play"
     elseif btnp(❎) and win==true then
     	mg1_show_discovery=true
+    elseif btnp(❎) and win!=nil then
+    	state="play"
     end
 
     if btnp(⬅️) then 
@@ -897,6 +899,7 @@ function dmg1()
         				print("press ❎ to continue", 24, 75, 13)
         else
             print("you lose :(",43,64,8)
+												print("press ❎ to continue", 24, 75, 13)
         end
 
         return
@@ -908,6 +911,7 @@ function dmg1()
     --ui
     print("⬅️",6,61,6)
     print("➡️",115,61,6)
+    print(#cur_star.name)
     print(cur_star.name,(129-(#cur_star.name)*4)/2,28,7)
 
     --selected stars
