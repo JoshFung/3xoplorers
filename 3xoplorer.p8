@@ -276,9 +276,16 @@ function icutscene()
  }
  
  text2 = {
-  "welcome back rover,",
-  "for this mission, you will help me discover an exoplanet using the radial velocity method.",
-  "press ➡️ to learn about your mission."
+  "welcome back rover, ready to discover another exoplanet?",
+  "sometimes, exoplanets can be hard to see because of the light from nearby stars.",
+  "to make the exoplanets more visible, scientists block the light coming from the star so that they can see the exoplanet better.",
+  "this technique is called the direct imaging method.",
+  "for this mission, we will be using direct imaging to discover a new exoplanet.",
+  "i already set up a camera facing a star.",
+  "there are some asteroids flying around. your job is to take a picture when an astroid is blocking the light from the star.",
+  "once you are ready to take the picture, press ❎.",
+  "then we will be able to see if the star has an exoplanet orbiting it.",
+  "good luck rover!",
  }
  
  msgindex = 1
@@ -453,17 +460,6 @@ function dmg1()
     end
 
     --background
---    for i=0,127,31 do
---        for j=22,127,31 do
---            if j%2==0 then
---                circ(i+16,j,1,5)
---                circ(i+16,j,0,6)
---            else
---                circ(i,j,1,5)
---                circ(i,j,0,6)
---            end
---        end
---    end
 				bg_draw_stars()
 
     --ui
