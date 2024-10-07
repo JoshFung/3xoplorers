@@ -13,7 +13,6 @@ function _init()
  isel()
  icutscene()
  img1()
- iintro()
  
  music(0,5000)
  state="title"
@@ -63,10 +62,6 @@ function _update()
   umg2a()
  end
  
- if state=="intro" then
-  uintro()
- end
- 
 end
 
 function _draw()
@@ -93,8 +88,8 @@ function _draw()
   dmg2s()
  elseif state=="mg2a" then
   dmg2a()
- elseif state=="intro" then
-  dintro()
+ elseif state=="ptypes" then
+  dptypes()
  end
 end
 -->8
@@ -188,14 +183,8 @@ function dplayer()
  end
 end
 -->8
---intro
-function iintro()
+--planettypes
 
-end
-
-function uintro()
-    -- no updates needed in this example
-end
 
 
 function draw_parabolabigy()
@@ -432,7 +421,7 @@ function draw_parabola3()
     end
 end
 
-function dintro()
+function dptypes()
     cls()
     for x = 0, 127 do
         -- calculate y as a function of x (a simple parabola)
@@ -1254,7 +1243,7 @@ function ucontrols()
  end
     -- check for button press ❎ (x key)
  if (btnp(❎) or btnp(🅾️)) and button_cooldown==0 then
-  state = "intro"  -- change to the game state to start
+  state = "ptypes"  -- change to the game state to start
 		button_cooldown = 2
 	end
 end
