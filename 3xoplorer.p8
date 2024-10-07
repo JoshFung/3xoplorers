@@ -28,6 +28,10 @@ function _update()
  if state=="title" then
   utitle()
  end
+
+if state=="controls" then
+  ucontrols()
+end
  
  --play
  if state=="play" then
@@ -67,6 +71,8 @@ function _draw()
   dplayer()
  elseif state=="title" then
   dtitle()
+ elseif state=="controls" then
+  dcontrols()
  elseif state=="minigame" then
   cls(5)
   print("minigame screen",35,50,7)
@@ -820,7 +826,7 @@ end
 
 function utitle()
  if (btnp(❎) or btnp(🅾️)) then
-  state="play"
+  state="controls"
  end
 end
 
@@ -877,6 +883,51 @@ function draw_stars()
    del(stars,star)
   end
  end
+end
+-->8
+-- initialize controls tutorial
+function icontrols()
+    -- set state to "controls" initially
+end
+
+button_cooldown = 2
+-- update function for controls tutorial
+function ucontrols()
+	if button_cooldown > 0 then
+  button_cooldown -= 1
+ end
+    -- check for button press ❎ (x key)
+ if (btnp(❎) or btnp(🅾️)) and button_cooldown==0 then
+  state = "play"  -- change to the game state to start
+		button_cooldown = 2
+	end
+end
+
+-- draw function for controls tutorial
+function dcontrols()
+    -- clear the screen
+    cls()
+
+    -- dimensions for the text box
+    local x0 = 16
+    local y0 = 16
+    local x1 = 112
+    local y1 = 112
+
+    -- draw a large rectangular box centered in the screen
+    rectfill(x0, y0, x1, y1, 1)  -- black box
+    rect(x0, y0, x1, y1, 7)       -- white border
+
+    -- display the control instructions inside the box
+    local text_x = x0 + 8
+    local text_y = y0 + 8
+    print("general controls", text_x,text_y, 12)
+    print("move: arrow keys", text_x, text_y + 48, 7)
+    print("🅾️: z", text_x, text_y + 16, 7)
+    print("❎: x", text_x, text_y + 24, 7)
+    print("➡️: right arrow", text_x,text_y+32, 7)
+    print("⬅️: left arrow", text_x,text_y+40, 7)
+    print("press ❎ to play", text_x, text_y + 80, 6)
 end
 __gfx__
 000000006dddddddddddddd66dddddddddddddd60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
