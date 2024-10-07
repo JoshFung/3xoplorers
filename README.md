@@ -5,7 +5,7 @@
 
 > Challenge: Chronicles of Exoplanet Exploration
 
-Playable at [link](https://www.lexaloffle.com/bbs/?tid=144633)
+# Playable at [PICO-8's Website](https://www.lexaloffle.com/bbs/?tid=144633)
 
 ## Overview
 
