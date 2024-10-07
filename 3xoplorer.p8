@@ -13,6 +13,7 @@ function _init()
  isel()
  icutscene()
  img1()
+ iintro()
  
  music(0,5000)
  state="title"
@@ -29,9 +30,9 @@ function _update()
   utitle()
  end
 
-if state=="controls" then
-  ucontrols()
-end
+	if state=="controls" then
+	  ucontrols()
+	end
  
  --play
  if state=="play" then
@@ -62,6 +63,10 @@ end
   umg2a()
  end
  
+ if state=="intro" then
+  uintro()
+ end
+ 
 end
 
 function _draw()
@@ -88,6 +93,8 @@ function _draw()
   dmg2s()
  elseif state=="mg2a" then
   dmg2a()
+ elseif state=="intro" then
+  dintro()
  end
 end
 -->8
@@ -181,15 +188,348 @@ function dplayer()
  end
 end
 -->8
---discovery method/tutorial
-function itut()
+--intro
+function iintro()
+
 end
 
-function utut()
+function uintro()
+    -- no updates needed in this example
 end
 
-function dtut()
+
+function draw_parabolabigy()
+	// big yellow planet
+    for x = 0, 39 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 80 - (x - 64)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 1, 40 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 64 - (x - 64)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 2, 40 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 63 - (x - 64)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+     for x = 0, 36 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 90 - (x - 64)^2 / 110
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 36 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 91 - (x - 64)^2 / 110
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 36 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 80 - (x - 64)^2 / 110
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 29 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 100 - (x - 64)^2 / 150
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 29 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 101 - (x - 64)^2 / 150
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 28 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 102 - (x - 64)^2 / 150
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 36 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 87 - (x - 64)^2 / 150
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0,20 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 110 - (x - 64)^2 / 190
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0,19 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 111 - (x - 64)^2 / 190
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0,15 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 114 - (x - 64)^2 / 190
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = 0,7 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 115 - (x - 64)^2 / 300
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
 end
+
+
+
+
+function draw_parabola()
+
+    for x = (74-19), (74+17) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 64 - (x - 64)^2 / 100
+        pset(x, y, 6) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-17), (74+7) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 57 - (x - 50)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    
+    for x = (74-19), (74+12) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 64 - (x - 50)^2 / 100
+        pset(x, y, 6) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-19), (74+12) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 66 - (x - 50)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-19), (74+14) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 67 - (x - 50)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    
+    for x = (74-19), (74+19) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 70 - (x - 74)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+        for x = (74-19), (74+19) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 72 - (x - 74)^2 / 100
+        pset(x, y, 6) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-16), (74+16) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 78 - (x - 74)^2 / 100
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = (74-7), (74+15) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 84 - (x - 60)^2 / 130
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+end
+
+function draw_left_half_circle()
+    local h = 93 -- x-coordinate of the center
+    local k = 20 -- y-coordinate of the center
+    local r = 3 -- radius of the circle
+
+    for y = k - r, k + r do
+        -- calculate x for the left half of the circle
+        local x = h - sqrt(r^2 - (y - k)^2)
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+end
+
+
+
+
+
+function draw_parabola2()
+				
+				for x = (90-5), (90+8) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 10 + (x - 60)^2 / 130
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = (90-5), (90+8) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 11 + (x - 60)^2 / 130
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = (90-7), (90+7) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 12 + (x - 60)^2 / 115
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+    
+    for x = (90-8), (90+5) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 15 + (x - 60)^2 / 109
+        pset(x, y, 7) -- plot the point in white (color 7)
+    end
+    
+    for x = (90-8), (90+1) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 19 + (x - 60)^2 / 100
+        pset(x, y, 10) -- plot the point in white (color 7)
+    end
+ 
+end
+
+function draw_parabola3()
+
+//(100, 99, 10, 3)
+    for x = (100-6), (100+10) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 115 - (x - 60)^2 / 150
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+    
+    for x = (100-3), (100+10) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 115 - (x - 60)^2 / 220
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+    
+    for x = (100-3), (100+8) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 116 - (x - 60)^2 / 220
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+    
+    
+    for x = (100-10), (100+8) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 100 - (x - 60)^2 / 400
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+    
+    for x = (100-10), (100+10) do
+        -- invert the quadratic equation to make the parabola face upwards
+        local y = 103 - (x - 60)^2 / 395
+        pset(x, y, 11) -- plot the point in white (color 7)
+    end
+end
+
+function dintro()
+    cls()
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 20 + (x - 64)^2 / 100
+        pset(x, y, 1) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 15 + (x - 64)^2 / 250
+        pset(x, y, 1) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 10 + (x - 64)^2 / 250
+        pset(x, y, -15) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 130 - (x - 64)^2 / 250
+        pset(x, y, -15) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 130 - (x - 64)^2 / 200
+        pset(x, y, -15) -- plot the point in white (color 7)
+    end
+    
+    for x = 0, 127 do
+        -- calculate y as a function of x (a simple parabola)
+        local y = 115 - (x - 64)^2 / 300
+        pset(x, y, -15) -- plot the point in white (color 7)
+    end
+    
+    pset(45, 90, 12)
+    pset(46, 92, 12)
+    pset(45, 95, 12)
+    pset(40, 100, 2)
+    pset(46, 100, 2)
+    circ(40, 100, 3, 2)
+    
+    
+    circfill(0, 64, 48, 1)
+    circfill(0, 64, 44, 13)
+    circfill(0, 64, 42, 10)
+    circfill(0, 64, 41, 2)
+    circfill(0, 64, 40, 9) -- big yellow planet at side
+
+    
+    circfill(90, 20, 17, 1)
+    circfill(90, 20, 12, 13)
+    circfill(90, 20, 10, 10)
+    circfill(90, 20, 9, 2)
+    circfill(90, 20, 8, 9) -- small yellow planet
+    
+    circfill(100, 99, 15, 1)
+    circfill(100, 99, 12, 13)
+    circfill(100, 99, 11, 0)
+    circfill(100, 99, 10, 3) -- green planet
+    
+    
+    circfill(74, 65, 29, 1)
+    circfill(74, 65, 22, 13)
+    circfill(74, 65, 21, 12)
+    circfill(74, 65, 20, 0)
+    circfill(74, 65, 19, 12) -- blue planet
+				
+			 pset(100, 50, 6)
+			 pset(104, 55, 6)
+			 pset(98, 50, 12)
+			 pset(92, 50, 12)
+			 pset(99, 55, 12)
+			 pset(99, 40, 7)
+			 circ(98, 50, 3, 12)
+			 
+			 pset(13, 20, 7)
+			 pset(13, 15, 7)
+			 pset(10, 15, 12)
+			 circ(11, 10, 3, 12)
+			 circ(11, 10, 1, 12)
+			 
+			 circ(40, 10, 1, 12)
+			 pset(47, 12, 7)
+			 pset(47, 16, 7)
+			 pset(43, 12, 7)
+			 
+			 
+
+				draw_parabola()
+				draw_parabola2()
+				draw_parabola3()
+    draw_parabolabigy() -- draw the parabola
+end
+
 -->8
 --selection box functions
 
@@ -914,7 +1254,7 @@ function ucontrols()
  end
     -- check for button press ❎ (x key)
  if (btnp(❎) or btnp(🅾️)) and button_cooldown==0 then
-  state = "play"  -- change to the game state to start
+  state = "intro"  -- change to the game state to start
 		button_cooldown = 2
 	end
 end
